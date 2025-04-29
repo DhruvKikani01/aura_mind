@@ -37,17 +37,18 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future _openPhone() async {
-    final Uri phoneLink = Uri(scheme: 'tel', path: '+91 8849936961');
-    if (await canLaunchUrl(phoneLink) == true) {
-      await launchUrl(phoneLink);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Could't open $phoneLink"),
-          backgroundColor: Colors.red,
-        ),
-      );
-    }
+    final Uri phoneLink = Uri(scheme: 'tel', path: '+918849936961');
+    // if (await canLaunchUrl(phoneLink) == true) {
+    //   await launchUrl(phoneLink);
+    // } else {
+    //   ScaffoldMessenger.of(context).showSnackBar(
+    //     SnackBar(
+    //       content: Text("Could't open $phoneLink"),
+    //       backgroundColor: Colors.red,
+    //     ),
+    //   );
+    // }
+    launchUrl(phoneLink);
   }
 
   @override
@@ -64,8 +65,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 fit: BoxFit.fitWidth,
               ),
               Positioned(
-                top: 80,
-                left: 350,
+                top: 10,
+                left: 290,
                 child: Row(
                   children: [
                     SizedBox(
@@ -290,7 +291,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: ClipRRect(
                                       borderRadius: BorderRadius.circular(20),
                                       child: Image.asset(
-                                          "assets/images/Aarav.png",height: 221,width: 150,)),
+                                        "assets/images/Aarav.png",
+                                        height: 221,
+                                        width: 150,
+                                      )),
                                 ),
                                 const SizedBox(
                                   width: 10,
@@ -415,7 +419,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ],
                         )),
-                  ),const Row(
+                  ),
+                  const Row(
                     children: [
                       SizedBox(
                         width: 20,
@@ -444,7 +449,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: ClipRRect(
                                       borderRadius: BorderRadius.circular(20),
                                       child: Image.asset(
-                                          "assets/images/Jiten.jpg",height: 221,width: 150,fit: BoxFit.fitHeight,)),
+                                        "assets/images/Jiten.jpg",
+                                        height: 221,
+                                        width: 150,
+                                        fit: BoxFit.fitHeight,
+                                      )),
                                 ),
                                 const SizedBox(
                                   width: 10,
@@ -541,7 +550,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ],
                         )),
-                  ),const Row(
+                  ),
+                  const Row(
                     children: [
                       SizedBox(
                         width: 20,
@@ -570,7 +580,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: ClipRRect(
                                       borderRadius: BorderRadius.circular(20),
                                       child: Image.asset(
-                                          "assets/images/Rachel.jpg",height: 221,width: 150,fit: BoxFit.fitHeight,)),
+                                        "assets/images/Rachel.jpg",
+                                        height: 221,
+                                        width: 150,
+                                        fit: BoxFit.fitHeight,
+                                      )),
                                 ),
                                 const SizedBox(
                                   width: 10,

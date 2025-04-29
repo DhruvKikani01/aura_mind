@@ -2,6 +2,7 @@ import 'package:aura_mind/Screens/Sign%20up%20Screen/signup.dart';
 import 'package:aura_mind/Utils/MyValidator.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../Services/google_sign_in.dart';
 import '../Bottom Navigation Screen/bottomnav.dart';
 import 'package:http/http.dart' as http;
 
@@ -36,30 +37,56 @@ class _LoginScreenState extends State<LoginScreen> {
     _initSharedPrefernces();
   }
 
-  bool isLoading = false;
+  // bool isLoading = false;
+  //
+  // String userSocialEmail = '';
 
-  Future _loginAPI() async {
-    setState(() {
-      isLoading = true;
-    });
-    var url = Uri.parse("https://reqres.in/api/login");
-    var responce = await http.post(url,
-        body: {"email": emailController.text, "password": passwordController.text});
-    if (responce.statusCode == 200) {
-      _preferences.setBool("isLogin", true);
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (BuildContext context) => const BottomnavScreen()));
-    }else{
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Login failed! Please check your credentials."),
-          backgroundColor: Colors.red,
-        ),
-      );
-    }
-  }
+  // Future _handleSignIn() async {
+  //   setState(() => isLoading = true);
+  //   final GoogleSignInProvider googleSignIn = GoogleSignInProvider();
+  //   try {
+  //     final UserCredential userCredential = await googleSignIn.signIn();
+  //     final user = userCredential.user;
+  //     debugPrint('user email is = ${user?.email}');
+  //     if (await GoogleSignIn().isSignedIn()) {
+  //       setState(() {
+  //         userSocialEmail = user!.email!;
+  //       });
+  //       Navigator.pushAndRemoveUntil(
+  //           context, MaterialPageRoute(builder: (_)=>BottomnavScreen()), (Route r) => false);
+  //       _preferences.setBool("isLogin", true);
+  //       // return _loginWithGoogleAPI();
+  //     }
+  //   } catch (error) {
+  //     print(error);
+  //   }
+  //   setState(() => isLoading = false);
+  // }
+
+  // bool isLoading = false;
+  //
+  // Future _loginAPI() async {
+  //   setState(() {
+  //     isLoading = true;
+  //   });
+  //   var url = Uri.parse("https://reqres.in/api/login");
+  //   var responce = await http.post(url,
+  //       body: {"email": emailController.text, "password": passwordController.text});
+  //   if (responce.statusCode == 200) {
+  //     _preferences.setBool("isLogin", true);
+  //     Navigator.pushReplacement(
+  //         context,
+  //         MaterialPageRoute(
+  //             builder: (BuildContext context) => const BottomnavScreen()));
+  //   }else{
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(
+  //         content: Text("Login failed! Please check your credentials."),
+  //         backgroundColor: Colors.red,
+  //       ),
+  //     );
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -224,9 +251,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
-                        if (ValidKey.currentState!.validate()) {
-                          _loginAPI();
-                        }
+                        // if (ValidKey.currentState!.validate()) {
+                        //   _loginAPI();
+                        // }
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    const BottomnavScreen()));
                       },
                       style: ButtonStyle(
                           backgroundColor:
@@ -275,7 +307,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           shape: WidgetStatePropertyAll(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ))),
-                      onPressed: () {},
+                      onPressed: () {
+                        // _handleSignIn();
+                      },
                       child: SizedBox(
                         width: 372,
                         height: 60,

@@ -1,3 +1,4 @@
+import 'package:aura_mind/Screens/Appointment%20Screen/appointment.dart';
 import 'package:aura_mind/Screens/Discover%20Screen/discover.dart';
 import 'package:aura_mind/Screens/Home%20Screen/home.dart';
 import 'package:aura_mind/Screens/Message%20Screen/message.dart';
@@ -50,10 +51,16 @@ class _BottomnavScreenState extends State<BottomnavScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton.small(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (_) => Appointment()));
+        },
         shape: CircleBorder(),
         backgroundColor: Color(0XFFEBD82F),
-        child: Icon(Icons.calendar_month_outlined,color: Colors.white,),
+        child: Icon(
+          Icons.calendar_month_outlined,
+          color: Colors.white,
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
